@@ -14,7 +14,7 @@ for HOME in $HOMES; do
                echo "Initiating daily rsync backup to NAS for ~/$HOME directory"
                cd /home/$HOME
                rsync -cdlptov --exclude '.rsyncignore' --delete --log-file=log/rsync-$(date +%Y-%m-%d).log . $DESTINATION
-               find . -maxdepth 1 -type d -not -name "." -exec rsync -crlptov --delete --log-file=log/rsync-$(date +%Y-%m-%d)-find.log {} $DESTINATION \;
+               find . -maxdepth 1 -type d -not -name "." -exec rsync -crlptov --exclude '.rsyncignore' --delete --log-file=log/rsync-$(date +%Y-%m-%d)-find.log {} $DESTINATION \;
                rm -f $FILE
                echo "Finished daily rsync backup to NAS for ~/$HOME directory"
           else
