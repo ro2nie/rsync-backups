@@ -1,5 +1,5 @@
 ## Inspiration
-The inspiration for writting this script comes from (here)[https://opensource.com/article/19/5/advanced-rsync]
+The inspiration for writting this script comes from [here](https://opensource.com/article/19/5/advanced-rsync)
 
 ## Using this rsync backup script
 
