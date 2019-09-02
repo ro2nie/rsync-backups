@@ -4,7 +4,6 @@ COMPUTER="lenovo-linux/"
 TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
 TODAY=$(date '+%Y-%m-%d')
 
-
 for HOME in $HOMES; do
      FILE=/home/$HOME/rsync/.rsync-backup.lock
      LOGFILE_RUN=/home/$HOME/rsync/logs/runs/run-$TODAY.log
@@ -30,4 +29,3 @@ for HOME in $HOMES; do
      echo "------------------------------------------------------------------------------" >> "$LOGFILE_RUN"
      fi
 done
-
