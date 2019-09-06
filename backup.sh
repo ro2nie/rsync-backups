@@ -1,3 +1,5 @@
+#!/bin/bash
+
 HOMES="ronnie" #i.e: bob john joe
 DRIVE="/mnt/nas-homes"
 COMPUTER="lenovo-linux/"
@@ -10,11 +12,11 @@ for HOME in $HOMES; do
      LOGFILE_RSYNC=/home/$HOME/rsync/logs/rsync/run-$TIMESTAMP.log
      LOGFILE_RSYNC_FIND=/home/$HOME/rsync/logs/rsync/run-$TIMESTAMP-find.log
 
-     #Cleanup - remove logs older than 30 days
-     find /home/$HOME/rsync/logs/ -name "*.log" -type f -mtime +30 -exec rm -f {} \;
+     #Cleanup - remove logs older than 7 days
+     find /home/$HOME/rsync/logs/ -name "*.log" -type f -mtime +7 -exec rm -f {} \;
 
      if [ ! -f "$FILE" ]; then
-          DESTINATION=$DRIVE/$HOME/rsync/$COMPUTER
+          DESTINATION=$DRIVE/$HOME/rsync/daily/$COMPUTER
           if [ -d "$DESTINATION" ]; then
                touch $FILE
                echo "[$(date '+%Y-%m-%d %H:%M:%S')] Initiating daily rsync backup to NAS to $DESTINATION directory" >> "$LOGFILE_RUN"
