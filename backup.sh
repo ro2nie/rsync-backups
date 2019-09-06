@@ -19,8 +19,8 @@ for HOME in $HOMES; do
                touch $FILE
                echo "[$(date '+%Y-%m-%d %H:%M:%S')] Initiating daily rsync backup to NAS to $DESTINATION directory" >> "$LOGFILE_RUN"
                cd /home/$HOME
-               rsync -cdlptov --exclude-from="/home/$HOME/rsync/.rsyncignore" --delete . $DESTINATION >> "$LOGFILE_RSYNC"
-               find . -maxdepth 1 -type d -not -name "." -exec rsync -crlptov --exclude-from="/home/$HOME/rsync/.rsyncignore" --delete {} $DESTINATION \; >> "$LOGFILE_RSYNC_FIND"
+               rsync -dlptov --progress --append-verify --exclude-from="/home/$HOME/rsync/.rsyncignore" --delete . $DESTINATION >> "$LOGFILE_RSYNC"
+               find . -maxdepth 1 -type d -not -name "." -exec rsync -rlptov --append-verify --progress --exclude-from="/home/$HOME/rsync/.rsyncignore" --delete {} $DESTINATION \; >> "$LOGFILE_RSYNC_FIND"
                rm -f $FILE
                echo "[$(date '+%Y-%m-%d %H:%M:%S')] Finished daily rsync backup to NAS to $DESTINATION directory" >> "$LOGFILE_RUN"
           else

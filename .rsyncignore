@@ -60,3 +60,4 @@ jspm_packages/
 .serverless/
 .fusebox/
 .dynamodb/
+.config/
