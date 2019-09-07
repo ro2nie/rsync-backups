@@ -21,7 +21,7 @@ else
 fi
 
 if [ "$NEEDS_TO_RUN" = true ] ; then
-  rsync -rlptogv --progress --append-verify --delete $SRC $DESTINATION >> "$LOGS"
   TIMESTAMP=$(date '+%Y-%m-%d %H:%M:%S')
   echo $TIMESTAMP > "$STATE"
+  rsync -rlptogv --progress --append-verify --delete $SRC $DESTINATION >> "$LOGS"  
 fi
